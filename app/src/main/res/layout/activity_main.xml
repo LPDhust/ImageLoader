@@ -16,7 +16,8 @@
         android:verticalSpacing="5dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="3"
-        android:stretchMode="columnWidth">
+        android:stretchMode="columnWidth"
+        android:layoutAnimation="@anim/anim_layout">
     </GridView>
 
 </LinearLayout>

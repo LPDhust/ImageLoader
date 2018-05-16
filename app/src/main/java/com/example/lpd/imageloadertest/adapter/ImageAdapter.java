@@ -19,6 +19,11 @@ import java.util.List;
  */
 
 public class ImageAdapter extends BaseAdapter {
+    public static class A{
+        public A(){
+
+        }
+    }
 
     private List<String> mUriList = new ArrayList<>();
     private LayoutInflater mInflater;

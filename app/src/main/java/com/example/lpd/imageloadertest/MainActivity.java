@@ -1,15 +1,20 @@
 package com.example.lpd.imageloadertest;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
 import android.widget.AbsListView;
 import android.widget.GridView;
 
 import com.example.lpd.imageloadertest.adapter.ImageAdapter;
+import com.example.lpd.imageloadertest.animations.Rotate3dAnimation;
 
 import java.util.ArrayList;
 
@@ -47,12 +52,22 @@ public class MainActivity extends AppCompatActivity {
         mImageAdapter = new ImageAdapter(uris, this);
         mImageGridView.setAdapter(mImageAdapter);
         initIsWifi();
+//        Animation animation = new Rotate3dAnimation(0, 180, mImageGridView.getPivotX(), mImageGridView.getPivotY(), 200, true);
+//        mImageGridView.startAnimation(animation);
     }
 
     @Override
     protected void onResume(){
         super.onResume();
         showNetworkDialog();
+        ValueAnimator valueAnimator = ObjectAnimator.ofInt(mImageGridView, "backgroundColor", 0xFFFF8080, 0xFF8080FF);
+        valueAnimator.setDuration(3000);
+        valueAnimator.setEvaluator(new ArgbEvaluator());
+        valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        valueAnimator.start();
+//        Animation animation = new Rotate3dAnimation(0, 180, mImageGridView.getPivotX(), mImageGridView.getPivotY(), 200, true);
+//        mImageGridView.startAnimation(animation);
     }
 
     private void initIsWifi(){
